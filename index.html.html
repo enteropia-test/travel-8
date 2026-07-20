@@ -1,0 +1,1842 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ನಮ್ಮ ಕರ್ನಾಟಕ ಪ್ರವಾಸ | Namma Karnataka Travels</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500;600;700;800&family=Noto+Sans+Kannada:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root {
+  --ks-red: #C8102E;
+  --ks-red-deep: #8B0E1F;
+  --ks-red-dark: #5C0A14;
+  --ks-yellow: #F5B82E;
+  --ks-yellow-light: #FFD66B;
+  --ks-gold: #D4A017;
+  --ks-cream: #FDF5E6;
+  --ks-cream-dark: #F5E6C8;
+  --ks-maroon: #3D0A0E;
+  --ks-white:#f1efef;
+  --ks-charcoal: #1A0F0A;
+  --ks-green: #2C5F2D;
+}
+
+* { font-family: 'Noto Sans Kannada', sans-serif; }
+.font-display { font-family: 'Baloo Tamma 2', cursive; }
+.font-serif-en { font-family: 'Playfair Display', serif; }
+.font-en { font-family: 'Outfit', sans-serif; }
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--ks-cream);
+  color: var(--ks-maroon);
+  overflow-x: hidden;
+}
+
+/* ===== Karnataka Flag Animation ===== */
+.ks-flag {
+  position: relative;
+  display: inline-block;
+}
+.ks-flag-pole {
+  position: absolute;
+  left: 0; top: -8px;
+  width: 4px; height: 110%;
+  background: linear-gradient(to bottom, #8B6F47, #4A3520);
+  border-radius: 2px;
+  box-shadow: 1px 0 2px rgba(0,0,0,0.3);
+}
+.ks-flag-pole::before {
+  content: '';
+  position: absolute;
+  top: -4px; left: -2px;
+  width: 8px; height: 8px;
+  background: var(--ks-gold);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--ks-gold);
+}
+.ks-flag-cloth {
+  position: absolute;
+  left: 4px; top: 0;
+  transform-origin: left center;
+  animation: flag-wave 3.5s ease-in-out infinite;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  border-radius: 0 4px 4px 0;
+  overflow: hidden;
+}
+/* Flag Fixed: Yellow on Top, Red on Bottom */
+.ks-flag-yellow {
+  height: 50%;
+  background: linear-gradient(135deg, #FFD700 0%, #F5B82E 50%, #D4A017 100%);
+}
+.ks-flag-red {
+  height: 50%;
+  background: linear-gradient(135deg, #DC143C 0%, #C8102E 50%, #A00D24 100%);
+}
+.ks-flag-cloth::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
+  animation: flag-shine 3.5s ease-in-out infinite;
+}
+@keyframes flag-wave {
+  0%, 100% { transform: perspective(150px) rotateY(0deg) skewY(0deg); }
+  25% { transform: perspective(150px) rotateY(-8deg) skewY(1.5deg); }
+  50% { transform: perspective(150px) rotateY(0deg) skewY(0deg); }
+  75% { transform: perspective(150px) rotateY(8deg) skewY(-1.5deg); }
+}
+@keyframes flag-shine {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+/* ===== Hero ===== */
+.hero-bg {
+  background: 
+    radial-gradient(ellipse 80% 60% at 70% 20%, rgba(245, 184, 46, 0.18), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(200, 16, 46, 0.15), transparent 60%),
+    linear-gradient(180deg, #1A0F0A 0%, #3D0A0E 40%, #2A0810 70%, #1A0F0A 100%);
+}
+
+.mandala-bg {
+  position: absolute;
+  width: 800px; height: 800px;
+  opacity: 0.05;
+  animation: rotate-slow 60s linear infinite;
+  pointer-events: none;
+}
+@keyframes rotate-slow {
+  to { transform: rotate(360deg); }
+}
+
+.particle {
+  position: absolute;
+  background: radial-gradient(circle, var(--ks-yellow-light), var(--ks-yellow));
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  filter: blur(0.5px);
+  box-shadow: 0 0 6px var(--ks-yellow);
+}
+@keyframes float-up {
+  0% { transform: translateY(100vh) translateX(0) scale(0); opacity: 0; }
+  10% { opacity: 0.9; transform: translateY(90vh) translateX(10px) scale(1); }
+  90% { opacity: 0.7; }
+  100% { transform: translateY(-10vh) translateX(80px) scale(0.5); opacity: 0; }
+}
+
+.pillar-silhouette {
+  position: absolute;
+  bottom: 0;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--ks-red) 0%, var(--ks-red-deep) 100%);
+  color: var(--ks-cream);
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 24px rgba(200, 16, 46, 0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,215,0,0.4), transparent);
+  transition: left 0.6s ease;
+}
+.btn-primary:hover::before { left: 100%; }
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(200, 16, 46, 0.5);
+}
+.btn-outline {
+  padding: 12px 32px;
+  border-radius: 50px;
+  border: 2px solid rgba(253, 245, 230, 0.4);
+  color: var(--ks-cream);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background: transparent;
+}
+.btn-outline:hover {
+  background: rgba(253, 245, 230, 0.1);
+  border-color: var(--ks-yellow);
+  color: var(--ks-yellow);
+}
+
+.section-title-wrap { position: relative; display: inline-block; }
+.section-title-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: -14px; left: 50%;
+  transform: translateX(-50%);
+  width: 80px; height: 4px;
+  background: linear-gradient(90deg, var(--ks-red), var(--ks-yellow));
+  border-radius: 2px;
+}
+.section-title-wrap::before {
+  content: '';
+  position: absolute;
+  bottom: -10px; left: 50%;
+  transform: translateX(-50%);
+  width: 6px; height: 6px;
+  background: var(--ks-yellow);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.dest-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  background: var(--ks-maroon);
+}
+.dest-card img {
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.dest-card:hover img { transform: scale(1.12); }
+.dest-card .overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(26, 15, 10, 0.95) 0%, rgba(26, 15, 10, 0.5) 50%, rgba(26, 15, 10, 0.1) 100%);
+}
+.dest-card .content {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 24px;
+  z-index: 2;
+}
+.dest-card .desc {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, margin-top 0.5s ease;
+  color: var(--ks-cream-dark);
+}
+.dest-card:hover .desc {
+  max-height: 100px;
+  margin-top: 8px;
+}
+.dest-card .badge {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: rgba(245, 184, 46, 0.95);
+  color: var(--ks-maroon);
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  z-index: 2;
+}
+.dest-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  background: linear-gradient(135deg, var(--ks-yellow), var(--ks-red)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.dest-card:hover::after { opacity: 1; }
+
+.region-card {
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+.region-card:hover { transform: translateY(-4px); }
+.region-card.active {
+  background: linear-gradient(135deg, var(--ks-red), var(--ks-red-deep));
+  color: var(--ks-cream);
+}
+.region-card.active .region-arrow { transform: translateX(4px); }
+
+.marquee-wrap {
+  overflow: hidden;
+  background: linear-gradient(90deg, var(--ks-red-deep), var(--ks-maroon), var(--ks-red-deep));
+  padding: 16px 0;
+  position: relative;
+}
+.marquee-wrap::before, .marquee-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+.marquee-wrap::before { left: 0; background: linear-gradient(90deg, var(--ks-red-deep), transparent); }
+.marquee-wrap::after { right: 0; background: linear-gradient(270deg, var(--ks-red-deep), transparent); }
+.marquee {
+  display: flex;
+  gap: 4rem;
+  animation: scroll-x 40s linear infinite;
+  white-space: nowrap;
+}
+@keyframes scroll-x {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--ks-yellow);
+  font-family: 'Baloo Tamma 2', cursive;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.marquee-dot {
+  width: 8px; height: 8px;
+  background: var(--ks-yellow);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.timeline { position: relative; padding: 40px 0; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, transparent, var(--ks-red), var(--ks-yellow), transparent);
+  transform: translateX(-50%);
+}
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 20px 40px;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.7s ease;
+}
+.timeline-item:nth-child(even) {
+  margin-left: 50%;
+  transform: translateX(30px);
+}
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.timeline-dot {
+  position: absolute;
+  top: 30px;
+  width: 18px; height: 18px;
+  background: var(--ks-yellow);
+  border: 4px solid var(--ks-red);
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: 0 0 0 4px var(--ks-cream);
+}
+.timeline-item:nth-child(odd) .timeline-dot { right: -9px; }
+.timeline-item:nth-child(even) .timeline-dot { left: -9px; }
+.timeline-content {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(61, 10, 14, 0.1);
+  border-left: 4px solid var(--ks-red);
+  transition: all 0.3s ease;
+}
+.timeline-content:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(61, 10, 14, 0.15);
+  border-left-color: var(--ks-yellow);
+}
+
+.cuisine-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background: white;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+.cuisine-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(61, 10, 14, 0.2);
+}
+.cuisine-img {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+.cuisine-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.cuisine-card:hover .cuisine-img img { transform: scale(1.1); }
+.cuisine-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(61,10,14,0.6), transparent 50%);
+}
+
+.package-card {
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  position: relative;
+}
+.package-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(61, 10, 14, 0.2);
+}
+.package-card.featured {
+  border: 3px solid var(--ks-yellow);
+  transform: scale(1.02);
+}
+.package-card.featured:hover {
+  transform: scale(1.02) translateY(-10px);
+}
+.package-tag {
+  position: absolute;
+  top: 16px; right: -32px;
+  background: linear-gradient(135deg, var(--ks-red), var(--ks-red-deep));
+  color: var(--ks-yellow);
+  padding: 6px 40px;
+  font-size: 12px;
+  font-weight: 700;
+  transform: rotate(45deg);
+  z-index: 5;
+  letter-spacing: 1px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px 18px;
+  background: var(--ks-cream);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  color: var(--ks-white);
+  font-size: 15px;
+  transition: all 0.3s ease;
+  font-family: 'Noto Sans Kannada', sans-serif;
+}
+.form-input:focus {
+  outline: none;
+  border-color: var(--ks-yellow);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(245, 184, 46, 0.15);
+}
+.form-input::placeholder { color: rgba(61, 10, 14, 0.4); }
+
+.nav-blur {
+  backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(26, 15, 10, 0.85);
+  border-bottom: 1px solid rgba(245, 184, 46, 0.2);
+}
+.nav-link {
+  position: relative;
+  color: var(--ks-cream);
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -6px; left: 0;
+  width: 0; height: 2px;
+  background: var(--ks-yellow);
+  transition: width 0.3s ease;
+}
+.nav-link:hover { color: var(--ks-yellow); }
+.nav-link:hover::after { width: 100%; }
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px; left: 50%;
+  transform: translateX(-50%);
+  width: 30px; height: 50px;
+  border: 2px solid rgba(253, 245, 230, 0.4);
+  border-radius: 15px;
+  z-index: 5;
+}
+.scroll-indicator::before {
+  content: '';
+  position: absolute;
+  top: 8px; left: 50%;
+  transform: translateX(-50%);
+  width: 4px; height: 8px;
+  background: var(--ks-yellow);
+  border-radius: 2px;
+  animation: scroll-down 2s infinite;
+}
+@keyframes scroll-down {
+  0% { transform: translate(-50%, 0); opacity: 1; }
+  100% { transform: translate(-50%, 22px); opacity: 0; }
+}
+
+.float-anim { animation: float 6s ease-in-out infinite; }
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.testimonial-card {
+  background: white;
+  border-radius: 20px;
+  padding: 32px;
+  position: relative;
+  transition: all 0.4s ease;
+  border-top: 4px solid var(--ks-red);
+}
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(61, 10, 14, 0.15);
+  border-top-color: var(--ks-yellow);
+}
+.testimonial-quote {
+  position: absolute;
+  top: -16px; left: 24px;
+  background: linear-gradient(135deg, var(--ks-red), var(--ks-yellow));
+  color: white;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.toast {
+  position: fixed;
+  bottom: 30px; right: 30px;
+  background: linear-gradient(135deg, var(--ks-red), var(--ks-red-deep));
+  color: var(--ks-cream);
+  padding: 16px 24px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  transform: translateX(400px);
+  transition: transform 0.4s ease;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.toast.show { transform: translateX(0); }
+
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: var(--ks-cream-dark); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--ks-red), var(--ks-yellow));
+  border-radius: 6px;
+  border: 2px solid var(--ks-cream-dark);
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: var(--ks-charcoal);
+  z-index: 100;
+  transform: translateX(100%);
+  transition: transform 0.4s ease;
+}
+.mobile-menu.open { transform: translateX(0); }
+
+.karnataka-map path {
+  fill: rgba(200, 16, 46, 0.15);
+  stroke: var(--ks-red);
+  stroke-width: 1.5;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.karnataka-map path:hover {
+  fill: var(--ks-yellow);
+  stroke: var(--ks-maroon);
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+.karnataka-map path.active {
+  fill: var(--ks-red);
+  stroke: var(--ks-yellow);
+}
+
+.pattern-bg {
+  background-image: 
+    radial-gradient(circle at 25px 25px, rgba(200, 16, 46, 0.04) 2px, transparent 2px),
+    radial-gradient(circle at 75px 75px, rgba(245, 184, 46, 0.04) 2px, transparent 2px);
+  background-size: 100px 100px;
+}
+
+.lang-btn {
+  background: rgba(245, 184, 46, 0.1);
+  border: 1px solid rgba(245, 184, 46, 0.3);
+  color: var(--ks-yellow);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-size: 14px;
+}
+.lang-btn:hover {
+  background: var(--ks-yellow);
+  color: var(--ks-maroon);
+}
+
+@media (max-width: 768px) {
+  .timeline::before { left: 20px; }
+  .timeline-item {
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 20px;
+  }
+  .timeline-item:nth-child(even) { margin-left: 0; }
+  .timeline-item:nth-child(odd) .timeline-dot,
+  .timeline-item:nth-child(even) .timeline-dot {
+    left: 11px;
+    right: auto;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Navigation ===== -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 nav-blur transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#home" class="flex items-center gap-3 group">
+      <div class="ks-flag" style="width: 36px; height: 24px;">
+        <div class="ks-flag-pole"></div>
+        <div class="ks-flag-cloth" style="width: 32px; height: 24px;">
+          <div class="ks-flag-yellow"></div>
+          <div class="ks-flag-red"></div>
+        </div>
+      </div>
+      <div>
+        <div class="font-display font-bold text-lg text-ks-cream leading-none"><span data-en="Namma Karnataka">ನಮ್ಮ ಕರ್ನಾಟಕ</span></div>
+        <div class="text-xs text-ks-yellow font-en tracking-widest">TRAVELS</div>
+      </div>
+    </a>
+    
+    <div class="hidden lg:flex items-center gap-8">
+      <a href="#home" class="nav-link"><span data-en="Home">ಮುಖಪುಟ</span></a>
+      <a href="#destinations" class="nav-link"><span data-en="Destinations">ಸ್ಥಳಗಳು</span></a>
+      <a href="#regions" class="nav-link"><span data-en="Regions">ಪ್ರದೇಶಗಳು</span></a>
+      <a href="#packages" class="nav-link"><span data-en="Packages">ಪ್ಯಾಕೇಜ್‌ಗಳು</span></a>
+      <a href="#culture" class="nav-link"><span data-en="Culture">ಸಂಸ್ಕೃತಿ</span></a>
+      <a href="#contact" class="nav-link"><span data-en="Contact">ಸಂಪರ್ಕ</span></a>
+    </div>
+    
+    <div class="flex items-center gap-3">
+      <button id="langToggle" class="lang-btn hidden md:flex items-center gap-2">
+        <i class="fas fa-globe"></i>
+        <span id="langText">English</span>
+      </button>
+      <a href="#contact" class="btn-primary text-sm hidden md:inline-flex">
+        <span data-en="Book Now">ಈಗ ಕಾಯಿರಿ</span>
+        <i class="fas fa-arrow-right text-xs"></i>
+      </a>
+      <button id="mobileMenuBtn" class="lg:hidden text-ks-cream text-2xl">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== Mobile Menu ===== -->
+<div id="mobileMenu" class="mobile-menu lg:hidden">
+  <div class="p-6">
+    <div class="flex justify-between items-center mb-8">
+      <button id="langToggleMobile" class="lang-btn flex items-center gap-2">
+        <i class="fas fa-globe"></i>
+        <span id="langTextMobile">English</span>
+      </button>
+      <button id="closeMobileMenu" class="text-ks-cream text-3xl">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="flex flex-col gap-6 text-2xl font-display">
+      <a href="#home" class="mobile-link text-ks-cream hover:text-ks-yellow transition"><span data-en="Home">ಮುಖಪುಟ</span></a>
+      <a href="#destinations" class="mobile-link text-ks-cream hover:text-ks-yellow transition"><span data-en="Destinations">ಸ್ಥಳಗಳು</span></a>
+      <a href="#regions" class="mobile-link text-ks-cream hover:text-ks-yellow transition"><span data-en="Regions">ಪ್ರದೇಶಗಳು</span></a>
+      <a href="#packages" class="mobile-link text-ks-cream hover:text-ks-yellow transition"><span data-en="Packages">ಪ್ಯಾಕೇಜ್‌ಗಳು</span></a>
+      <a href="#culture" class="mobile-link text-ks-cream hover:text-ks-yellow transition"><span data-en="Culture">ಸಂಸ್ಕೃತಿ</span></a>
+      <a href="#contact" class="mobile-link text-ks-cream hover:text-ks-yellow transition"><span data-en="Contact">ಸಂಪರ್ಕ</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Hero Section ===== -->
+<header id="home" class="hero-bg relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+  
+  <svg class="mandala-bg" style="top: -200px; right: -200px;" viewBox="0 0 800 800">
+    <g fill="none" stroke="#F5B82E" stroke-width="0.5">
+      <circle cx="400" cy="400" r="380"/>
+      <circle cx="400" cy="400" r="320"/>
+      <circle cx="400" cy="400" r="260"/>
+      <circle cx="400" cy="400" r="200"/>
+      <circle cx="400" cy="400" r="140"/>
+      <circle cx="400" cy="400" r="80"/>
+      <g id="petal-group">
+        <path d="M400,60 Q420,200 400,340 Q380,200 400,60"/>
+      </g>
+      <use href="#petal-group" transform="rotate(22.5 400 400)"/>
+      <use href="#petal-group" transform="rotate(45 400 400)"/>
+      <use href="#petal-group" transform="rotate(67.5 400 400)"/>
+      <use href="#petal-group" transform="rotate(90 400 400)"/>
+      <use href="#petal-group" transform="rotate(112.5 400 400)"/>
+      <use href="#petal-group" transform="rotate(135 400 400)"/>
+      <use href="#petal-group" transform="rotate(157.5 400 400)"/>
+    </g>
+  </svg>
+  
+  <svg class="pillar-silhouette" style="left: 0; width: 300px; height: 60%;" viewBox="0 0 300 600" preserveAspectRatio="xMidYMax meet">
+    <g fill="#1A0F0A">
+      <rect x="20" y="300" width="40" height="300"/>
+      <rect x="10" y="280" width="60" height="25"/>
+      <rect x="15" y="260" width="50" height="25"/>
+      <rect x="20" y="590" width="50" height="10"/>
+      <rect x="80" y="350" width="35" height="250"/>
+      <rect x="70" y="330" width="55" height="25"/>
+      <rect x="75" y="310" width="45" height="25"/>
+      <rect x="80" y="590" width="45" height="10"/>
+      <rect x="140" y="320" width="40" height="280"/>
+      <rect x="130" y="300" width="60" height="25"/>
+      <rect x="135" y="280" width="50" height="25"/>
+      <rect x="140" y="590" width="50" height="10"/>
+    </g>
+  </svg>
+
+  <svg class="pillar-silhouette" style="right: 0; width: 300px; height: 60%; transform: scaleX(-1);" viewBox="0 0 300 600" preserveAspectRatio="xMidYMax meet">
+    <g fill="#1A0F0A">
+      <rect x="20" y="300" width="40" height="300"/>
+      <rect x="10" y="280" width="60" height="25"/>
+      <rect x="15" y="260" width="50" height="25"/>
+      <rect x="20" y="590" width="50" height="10"/>
+      <rect x="80" y="350" width="35" height="250"/>
+      <rect x="70" y="330" width="55" height="25"/>
+      <rect x="75" y="310" width="45" height="25"/>
+      <rect x="80" y="590" width="45" height="10"/>
+      <rect x="140" y="320" width="40" height="280"/>
+      <rect x="130" y="300" width="60" height="25"/>
+      <rect x="135" y="280" width="50" height="25"/>
+      <rect x="140" y="590" width="50" height="10"/>
+    </g>
+  </svg>
+  
+  <div id="particles" class="absolute inset-0 pointer-events-none"></div>
+  
+  <div class="absolute top-32 right-8 md:right-16 z-20 hidden md:block float-anim">
+    <div class="ks-flag" style="width: 140px; height: 90px;">
+      <div class="ks-flag-pole"></div>
+      <div class="ks-flag-cloth" style="width: 130px; height: 90px;">
+        <div class="ks-flag-yellow"></div>
+        <div class="ks-flag-red"></div>
+      </div>
+    </div>
+    <p class="text-center text-ks-yellow font-display mt-3 text-lg" style="margin-left: 8px;"><span data-en="Karnataka">ಕರ್ನಾಟಕ</span></p>
+  </div>
+  
+  <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+    <div class="reveal visible">
+      <p class="text-ks-yellow text-sm md:text-base tracking-[0.4em] mb-6 font-en uppercase"><span data-en="Welcome">Welcome • ಸ್ವಾಗತ</span></p>
+    </div>
+    
+    <h1 class="font-display font-extrabold text-ks-cream mb-4 leading-[0.95]">
+      <span class="block text-5xl md:text-7xl lg:text-8xl reveal visible"><span data-en="Namma">ನಮ್ಮ</span></span>
+      <span class="block text-7xl md:text-9xl lg:text-[10rem] reveal visible reveal-delay-1" style="background: linear-gradient(135deg, #F5B82E 0%, #FFD700 50%, #F5B82E 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 80px rgba(245, 184, 46, 0.3);"><span data-en="Karnataka">ಕರ್ನಾಟಕ</span></span>
+    </h1>
+    
+    <p class="text-xl md:text-3xl text-ks-cream/90 mb-3 font-display font-medium reveal visible reveal-delay-2"><span data-en="Tourism">ಪ್ರವಾಸೋದ್ಯಮ</span></p>
+    
+    <p class="text-base md:text-lg text-ks-cream/70 max-w-2xl mx-auto mb-10 font-serif-en italic reveal visible reveal-delay-3">
+      <span data-en="Where ancient heritage meets untamed wilderness — journey through the soul of South India, from the ruins of Hampi to the coffee hills of Coorg">Where ancient heritage meets untamed wilderness — journey through the soul of South India, from the ruins of Hampi to the coffee hills of Coorg</span>
+    </p>
+    
+    <div class="flex flex-col sm:flex-row gap-4 justify-center reveal visible reveal-delay-3">
+      <a href="#packages" class="btn-primary">
+        <span data-en="Book Trip">ಪ್ರವಾಸ ಕಾಯಿರಿ</span>
+        <i class="fas fa-arrow-right text-sm"></i>
+      </a>
+      <a href="#destinations" class="btn-outline font-display">
+        <span data-en="Explore Destinations">ಸ್ಥಳಗಳನ್ನು ಅನ್ವೇಷಿಸಿ</span>
+      </a>
+    </div>
+    
+    <div class="mt-16 grid grid-cols-3 gap-6 max-w-2xl mx-auto reveal visible reveal-delay-3">
+      <div class="text-center">
+        <div class="text-ks-yellow font-display text-2xl md:text-3xl font-bold">31</div>
+        <div class="text-ks-cream/60 text-xs md:text-sm"><span data-en="Districts">ಜಿಲ್ಲೆಗಳು</span></div>
+      </div>
+      <div class="text-center border-x border-ks-cream/20">
+        <div class="text-ks-yellow font-display text-2xl md:text-3xl font-bold">5000+</div>
+        <div class="text-ks-cream/60 text-xs md:text-sm"><span data-en="Years of History">ವರ್ಷಗಳ ಇತಿಹಾಸ</span></div>
+      </div>
+      <div class="text-center">
+        <div class="text-ks-yellow font-display text-2xl md:text-3xl font-bold">UNESCO</div>
+        <div class="text-ks-cream/60 text-xs md:text-sm"><span data-en="Heritage Sites">ಪರಂಪರೆಯ ಸ್ಥಳಗಳು</span></div>
+      </div>
+    </div>
+  </div>
+  
+</header>
+
+<!-- ===== Marquee ===== -->
+<div class="marquee-wrap">
+  <div class="marquee">
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Jai Karnataka Mata">ಜೈ ಕರ್ನಾಟಕ ಮಾತೆ</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Hampi World Heritage Site">ಹಂಪೆ ವಿಶ್ವ ಪರಂಪರೆಯ ಸ್ಥಳ</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Mysore Dasara Navaratri">ಮೈಸೂರು ದಸರಾ ನವರಾತ್ರಿ</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Coorg Coffee Land">ಕೊಡಗು ಕಾಫಿ ನಾಡು</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Jog Falls Beauty">ಜೋಗ ಜಲಪಾತ ಸೌಂದರ್ಯ</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Western Ghats Greenery">ಪಶ್ಚಿಮ ಘಟ್ಟದ ಹಸಿರು ಸಮೃದ್ಧಿ</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Jai Karnataka Mata">ಜೈ ಕರ್ನಾಟಕ ಮಾತೆ</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Hampi World Heritage Site">ಹಂಪೆ ವಿಶ್ವ ಪರಂಪರೆಯ ಸ್ಥಳ</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Mysore Dasara Navaratri">ಮೈಸೂರು ದಸರಾ ನವರಾತ್ರಿ</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Coorg Coffee Land">ಕೊಡಗು ಕಾಫಿ ನಾಡು</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Jog Falls Beauty">ಜೋಗ ಜಲಪಾತ ಸೌಂದರ್ಯ</span></div>
+    <div class="marquee-item"><span class="marquee-dot"></span><span data-en="Western Ghats Greenery">ಪಶ್ಚಿಮ ಘಟ್ಟದ ಹಸಿರು ಸಮೃದ್ಧಿ</span></div>
+  </div>
+</div>
+
+<!-- ===== About Section ===== -->
+<section class="py-24 px-6 pattern-bg relative overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <div class="section-title-wrap mb-8">
+          <p class="text-ks-red font-en tracking-widest text-sm uppercase mb-2">About Karnataka</p>
+          <h2 class="font-display text-4xl md:text-5xl font-bold text-ks-maroon"><span data-en="About Karnataka">ಕರ್ನಾಟಕದ ಪರಿಚಯ</span></h2>
+        </div>
+        
+        <p class="text-ks-maroon/80 text-lg leading-relaxed mb-6">
+          <span data-en="Karnataka — a land of hundreds of years of history, rich culture, diverse geography, and extraordinary beauty. From the greenery of the Western Ghats to the southern coast, from the ancient art of Hampi to modern technology in Bangalore — Karnataka offers a unique experience for every traveler.">ಕರ್ನಾಟಕ — ನೂರಾರು ವರ್ಷಗಳ ಇತಿಹಾಸ, ಸಮೃದ್ಧ ಸಂಸ್ಕೃತಿ, ವೈವಿಧ್ಯಮಯ ಭೂಗೋಳ ಮತ್ತು ಅತಿಶಯ ಸೌಂದರ್ಯದ ನಾಡು. ಪಶ್ಚಿಮ ಘಟ್ಟದ ಹಸಿರು ಸಮೃದ್ಧಿಯಿಂದ ಹಿಡಿದು ದಕ್ಷಿಣದ ಕಡಲತಡಿಯವರೆಗೆ, ಹಂಪೆಯ ಪ್ರಾಚೀನ ಕಲೆಯಿಂದ ಬೆಂಗಳೂರಿನ ಆಧುನಿಕ ತಂತ್ರಜ್ಞಾನದವರೆಗೆ — ಕರ್ನಾಟಕ ಪ್ರತಿಯೊಂದು ಪ್ರವಾಸಿಗನಿಗೂ ಅನುಪಮ ಅನುಭವವನ್ನು ನೀಡುತ್ತದೆ.</span>
+        </p>
+        
+        <p class="text-ks-maroon/70 text-base leading-relaxed mb-8">
+          <span data-en="The magnificent ruins of the Vijayanagara Empire, the amazing cave temples of Chalukya architecture, the royal beauty of Mysore Palace, and the serene atmosphere of Coorg's coffee plantations — these are all Karnataka's proud treasures.">ವಿಜಯನಗರ ಸಾಮ್ರಾಜ್ಯದ ಭವ್ಯ ಅವಶೇಷಗಳು, ಚಾಲುಕ್ಯರ ವಾಸ್ತುಶಿಲ್ಪದ ಅದ್ಭುತ ಗುಹಾಲಯಗಳು, ಮೈಸೂರು ಅರಮನೆಯ ರಾಜಮನೋಹರ ಸೌಂದರ್ಯ, ಮತ್ತು ಕೊಡಗಿನ ಕಾಫಿ ತೋಟಗಳ ಶಾಂತಿಯುತ ವಾತಾವರಣ — ಇವೆಲ್ಲವೂ ಕರ್ನಾಟಕದ ಹೆಮ್ಮೆಯ ಸಂಪತ್ತು.</span>
+        </p>
+        
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-full bg-ks-red/10 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-mountain text-ks-red"></i>
+            </div>
+            <div>
+              <div class="font-display font-bold text-ks-maroon"><span data-en="Western Ghats">ಪಶ್ಚಿಮ ಘಟ್ಟ</span></div>
+              <div class="text-sm text-ks-maroon/60"><span data-en="Biodiversity Hotspot">ಜೀವವೈವಿಧ್ಯ ಹಾಟ್‌ಸ್ಪಾಟ್</span></div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-full bg-ks-yellow/20 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-water text-ks-gold"></i>
+            </div>
+            <div>
+              <div class="font-display font-bold text-ks-maroon"><span data-en="320 km Coastline">320 ಕಿ.ಮೀ ಕಡಲತಡಿ</span></div>
+              <div class="text-sm text-ks-maroon/60"><span data-en="Coastal Region">ಕರಾವಳಿ ಪ್ರದೇಶ</span></div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-full bg-ks-red/10 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-landmark text-ks-red"></i>
+            </div>
+            <div>
+              <div class="font-display font-bold text-ks-maroon"><span data-en="World Heritage">ವಿಶ್ವ ಪರಂಪರೆ</span></div>
+              <div class="text-sm text-ks-maroon/60"><span data-en="Hampi, Pattadakal">ಹಂಪೆ, ಪಟ್ಟದಕಲ್ಲು</span></div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-full bg-ks-yellow/20 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-tree text-ks-gold"></i>
+            </div>
+            <div>
+              <div class="font-display font-bold text-ks-maroon"><span data-en="5 National Parks">5 ರಾಷ್ಟ್ರೀಯ ಉದ್ಯಾನ</span></div>
+              <div class="text-sm text-ks-maroon/60"><span data-en="Wildlife Conservation">ವನ್ಯಜೀವಿ ಸಂರಕ್ಷಣೆ</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="reveal reveal-delay-2 relative">
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+          <img src="https://picsum.photos/seed/hampi-stone-chariot/800/900" alt="Hampi" class="w-full h-[500px] object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-ks-maroon/60 via-transparent to-transparent"></div>
+        </div>
+        
+        <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl p-5 shadow-2xl max-w-[240px]">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="ks-flag" style="width: 40px; height: 26px;">
+              <div class="ks-flag-pole"></div>
+              <div class="ks-flag-cloth" style="width: 36px; height: 26px;">
+                <div class="ks-flag-yellow"></div>
+                <div class="ks-flag-red"></div>
+              </div>
+            </div>
+            <div class="font-display font-bold text-ks-maroon"><span data-en="Karnataka">ಕರ್ನಾಟಕ</span></div>
+          </div>
+          <p class="text-xs text-ks-maroon/60"><span data-en="A land of rich heritage in the heart of South India">ದಕ್ಷಿಣ ಭಾರತದ ಹೃದಯ ಭಾಗದಲ್ಲಿರುವ ಸಮೃದ್ಧ ಪರಂಪರೆಯ ನಾಡು</span></p>
+        </div>
+        
+        <div class="absolute -top-6 -right-6 bg-gradient-to-br from-ks-red to-ks-red-deep text-ks-cream rounded-full w-24 h-24 flex flex-col items-center justify-center shadow-2xl float-anim">
+          <div class="font-display font-bold text-2xl">50K+</div>
+          <div class="text-xs"><span data-en="Tourists">ಪ್ರವಾಸಿಗಳು</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Destinations Section ===== -->
+<section id="destinations" class="py-24 px-6 bg-ks-cream-dark/30">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <div class="section-title-wrap">
+        <p class="text-ks-red font-en tracking-widest text-sm uppercase mb-2">Popular Destinations</p>
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-ks-maroon"><span data-en="Must-Visit Places">ತಲುಪಬೇಕಾದ ಸ್ಥಳಗಳು</span></h2>
+      </div>
+      <p class="text-ks-maroon/60 mt-8 max-w-2xl mx-auto"><span data-en="Explore the most popular tourist destinations in Karnataka — each telling a unique story">ಕರ್ನಾಟಕದ ಅತ್ಯಂತ ಜನಪ್ರಿಯ ಪ್ರವಾಸಿ ಸ್ಥಳಗಳನ್ನು ಅನ್ವೇಷಿಸಿ — ಪ್ರತಿಯೊಂದೂ ವಿಶಿಷ್ಟ ಕಥೆಯನ್ನು ಹೇಳುತ್ತವೆ</span></p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div id="destinations-grid" class="contents"></div>
+    </div>
+    
+    <div class="text-center mt-12 reveal">
+      <a href="#contact" class="btn-primary">
+        <span data-en="View More Places">ಇನ್ನಷ್ಟು ಸ್ಥಳಗಳನ್ನು ನೋಡಿ</span>
+        <i class="fas fa-arrow-right text-sm"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Interactive Map / Regions ===== -->
+<section id="regions" class="py-24 px-6 bg-ks-maroon text-ks-cream relative overflow-hidden">
+  <div class="absolute top-0 right-0 w-96 h-96 opacity-10">
+    <svg viewBox="0 0 200 200">
+      <g fill="none" stroke="#F5B82E" stroke-width="0.5">
+        <circle cx="100" cy="100" r="90"/>
+        <circle cx="100" cy="100" r="70"/>
+        <circle cx="100" cy="100" r="50"/>
+        <circle cx="100" cy="100" r="30"/>
+        <line x1="10" y1="100" x2="190" y2="100"/>
+        <line x1="100" y1="10" x2="100" y2="190"/>
+        <line x1="36" y1="36" x2="164" y2="164"/>
+        <line x1="164" y1="36" x2="36" y2="164"/>
+      </g>
+    </svg>
+  </div>
+  
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="text-center mb-16 reveal">
+      <div class="section-title-wrap">
+        <p class="text-ks-yellow font-en tracking-widest text-sm uppercase mb-2">Explore Regions</p>
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-ks-cream"><span data-en="Regions of Karnataka">ಕರ್ನಾಟಕದ ಪ್ರದೇಶಗಳು</span></h2>
+      </div>
+      <p class="text-ks-cream/70 mt-8 max-w-2xl mx-auto"><span data-en="Explore the four distinct regions of Karnataka — each with its own specialty">ಕರ್ನಾಟಕದ ನಾಲ್ಕು ವಿಭಿನ್ನ ಪ್ರದೇಶಗಳನ್ನು ಅನ್ವೇಷಿಸಿ — ಪ್ರತಿಯೊಂದೂ ತನ್ನದೇ ಆದ ವಿಶೇಷತೆಯನ್ನು ಹೊಂದಿದೆ</span></p>
+    </div>
+    
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="reveal">
+        <div class="relative">
+          <svg class="karnataka-map w-full max-w-md mx-auto" viewBox="0 0 400 400">
+            <path id="region-north" d="M 80,60 L 280,60 L 290,140 L 270,180 L 200,190 L 130,180 L 90,150 Z" />
+            <path id="region-coastal" d="M 60,180 L 90,150 L 130,180 L 120,240 L 80,280 L 50,240 Z" />
+            <path id="region-malnad" d="M 130,180 L 200,190 L 270,180 L 290,140 L 320,200 L 300,260 L 240,270 L 180,260 L 120,240 Z" />
+            <path id="region-south" d="M 200,190 L 270,180 L 320,200 L 340,280 L 300,340 L 220,350 L 150,320 L 120,240 L 180,260 L 240,270 L 300,260 Z" />
+            
+            <text x="180" y="120" text-anchor="middle" fill="#FDF5E6" font-size="14" font-weight="600" font-family="Baloo Tamma 2" pointer-events="none"><tspan data-en="North">ಉತ್ತರ</tspan></text>
+            <text x="80" y="220" text-anchor="middle" fill="#FDF5E6" font-size="11" font-weight="600" font-family="Baloo Tamma 2" pointer-events="none"><tspan data-en="Coastal">ಕರಾವಳಿ</tspan></text>
+            <text x="210" y="230" text-anchor="middle" fill="#FDF5E6" font-size="13" font-weight="600" font-family="Baloo Tamma 2" pointer-events="none"><tspan data-en="Malnad">ಮಲೆನಾಡು</tspan></text>
+            <text x="230" y="300" text-anchor="middle" fill="#FDF5E6" font-size="13" font-weight="600" font-family="Baloo Tamma 2" pointer-events="none"><tspan data-en="South">ದಕ್ಷಿಣ</tspan></text>
+          </svg>
+          
+          <div class="text-center mt-4 text-ks-yellow text-sm font-display">
+            <i class="fas fa-hand-pointer mr-2"></i><span data-en="Click on a region">ಪ್ರದೇಶದ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="reveal reveal-delay-2">
+        <div id="region-list" class="grid grid-cols-2 gap-3 mb-6"></div>
+        
+        <div id="region-detail" class="bg-ks-charcoal/60 backdrop-blur rounded-2xl p-8 border border-ks-yellow/20">
+          <h3 class="font-display text-3xl font-bold text-ks-yellow mb-2" id="region-name">ಉತ್ತರ ಕರ್ನಾಟಕ</h3>
+          <p class="text-ks-cream/60 text-sm font-en mb-4" id="region-name-en">North Karnataka</p>
+          <p class="text-ks-cream/80 mb-6" id="region-desc"></p>
+          
+          <div class="mb-4">
+            <p class="text-ks-yellow text-sm font-display mb-3"><span data-en="Top Places:">ಪ್ರಮುಖ ಸ್ಥಳಗಳು:</span></p>
+            <div id="region-places" class="flex flex-wrap gap-2"></div>
+          </div>
+          
+          <button class="btn-primary mt-4" onclick="bookRegion()">
+            <span data-en="Book Trip">ಪ್ರವಾಸ ಕಾಯಿರಿ</span>
+            <i class="fas fa-arrow-right text-xs"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Packages Section ===== -->
+<section id="packages" class="py-24 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <div class="section-title-wrap">
+        <p class="text-ks-red font-en tracking-widest text-sm uppercase mb-2">Travel Packages</p>
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-ks-maroon"><span data-en="Travel Packages">ಪ್ರವಾಸ ಪ್ಯಾಕೇಜ್‌ಗಳು</span></h2>
+      </div>
+      <p class="text-ks-maroon/60 mt-8 max-w-2xl mx-auto"><span data-en="Specially prepared packages for you — all at affordable prices">ನಿಮಗಾಗಿ ವಿಶೇಷವಾಗಿ ಸಿದ್ಧಪಡಿಸಿದ ಪ್ಯಾಕೇಜ್‌ಗಳು — ಎಲ್ಲವೂ ಅನುಕೂಲಕರ ಬೆಲೆಯಲ್ಲಿ</span></p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="packages-grid"></div>
+  </div>
+</section>
+
+<!-- ===== Culture & Festivals Timeline ===== -->
+<section id="culture" class="py-24 px-6 bg-gradient-to-b from-ks-cream-dark/30 to-ks-cream relative">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <div class="section-title-wrap">
+        <p class="text-ks-red font-en tracking-widest text-sm uppercase mb-2">Culture & Festivals</p>
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-ks-maroon"><span data-en="Culture & Festivals">ಸಂಸ್ಕೃತಿ ಮತ್ತು ಉತ್ಸವಗಳು</span></h2>
+      </div>
+      <p class="text-ks-maroon/60 mt-8 max-w-2xl mx-auto"><span data-en="Rich cultural heritage of Karnataka — special festivals celebrated throughout the year">ಕರ್ನಾಟಕದ ಸಮೃದ್ಧ ಸಾಂಸ್ಕೃತಿಕ ಪರಂಪರೆ — ವರ್ಷದುದ್ದಕ್ಕೂ ಆಚರಿಸಲಾಗುವ ವಿಶೇಷ ಹಬ್ಬಗಳು</span></p>
+    </div>
+    
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="text-ks-red font-en text-xs font-bold tracking-wider uppercase"><span data-en="January - February">ಜನವರಿ - ಫೆಬ್ರವರಿ</span></span>
+          <h3 class="font-display text-2xl font-bold text-ks-maroon mt-2 mb-2"><span data-en="Makar Sankranti">ಮಕರ ಸಂಕ್ರಾಂತಿ</span></h3>
+          <p class="text-ks-maroon/70 text-sm"><span data-en="The joyous festival of sesame and jaggery. A harvest festival celebrated with family. Special kite flying and sweets.">ಎಳ್ಳು-ಬೆಲ್ಲ ಬೀರುವ ಸಂಭ್ರಮದ ಹಬ್ಬ. ಕುಟುಂಬ ಸಮೇತ ಆಚರಿಸುವ ಸುಗ್ಗಿ ಹಬ್ಬ. ಹಾರಿಸುವ ಗಾಳಿಪಟ ಮತ್ತು ಸಿಹಿ ತಿಂಡಿಗಳ ವಿಶೇಷ.</span></p>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="text-ks-red font-en text-xs font-bold tracking-wider uppercase"><span data-en="March - April">ಮಾರ್ಚ್ - ಏಪ್ರಿಲ್</span></span>
+          <h3 class="font-display text-2xl font-bold text-ks-maroon mt-2 mb-2"><span data-en="Ugadi">ಉಗಾದಿ</span></h3>
+          <p class="text-ks-maroon/70 text-sm"><span data-en="Kannada New Year celebration. Eating neem-jaggery signifies accepting life's joys and sorrows equally.">ಕನ್ನಡ ಹೊಸ ವರ್ಷದ ಆಚರಣೆ. ಬೇವು-ಬೆಲ್ಲ ತಿಂದು ಜೀವನದ ಸುಖ-ದುಃಖಗಳನ್ನು ಸಮಾನವಾಗಿ ಸ್ವೀಕರಿಸುವ ಸಂದೇಶ.</span></p>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="text-ks-red font-en text-xs font-bold tracking-wider uppercase"><span data-en="August - September">ಆಗಸ್ಟ್ - ಸೆಪ್ಟೆಂಬರ್</span></span>
+          <h3 class="font-display text-2xl font-bold text-ks-maroon mt-2 mb-2"><span data-en="Shravana Month">ಶ್ರಾವಣ ಮಾಸ</span></h3>
+          <p class="text-ks-maroon/70 text-sm"><span data-en="Nagara Panchami, Varamahalakshmi Vrata, Krishna Janmashtami. A sacred month where women perform special pujas.">ನಾಗರ ಪಂಚಮಿ, ವರಮಹಾಲಕ್ಷ್ಮಿ ವ್ರತ, ಕೃಷ್ಣ ಜನ್ಮಾಷ್ಟಮಿ. ಮಹಿಳೆಯರು ವಿಶೇಷ ಪೂಜೆಗಳನ್ನು ಮಾಡುವ ಪವಿತ್ರ ಮಾಸ.</span></p>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="text-ks-red font-en text-xs font-bold tracking-wider uppercase"><span data-en="September - October">ಸೆಪ್ಟೆಂಬರ್ - ಅಕ್ಟೋಬರ್</span></span>
+          <h3 class="font-display text-2xl font-bold text-ks-maroon mt-2 mb-2"><span data-en="Mysore Dasara">ಮೈಸೂರು ದಸರಾ</span></h3>
+          <p class="text-ks-maroon/70 text-sm"><span data-en="Karnataka's state festival! Ten days of grand celebrations, palace illumination, Jumbo Savari, and cultural procession.">ಕರ್ನಾಟಕದ ನಾಡಹಬ್ಬ! ದಸ್ ದಿನಗಳ ಭವ್ಯ ಉತ್ಸವ, ಅರಮನೆ ಬೆಳಕು, ಜಂಬೂ ಸವಾರಿ, ಮತ್ತು ಸಾಂಸ್ಕೃತಿಕ ಮೆರವಣಿಗೆ.</span></p>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="text-ks-red font-en text-xs font-bold tracking-wider uppercase"><span data-en="November">ನವೆಂಬರ್</span></span>
+          <h3 class="font-display text-2xl font-bold text-ks-maroon mt-2 mb-2"><span data-en="Hampi Utsav">ಹಂಪಿ ಉತ್ಸವ</span></h3>
+          <p class="text-ks-maroon/70 text-sm"><span data-en="A grand three-day festival recalling the past glory of the Vijayanagara Empire. Music, dance, and light shows.">ವಿಜಯನಗರ ಸಾಮ್ರಾಜ್ಯದ ಗತ ವೈಭವವನ್ನು ಪುನಃ ಸ್ಮರಿಸುವ ಮೂರು ದಿನಗಳ ಭವ್ಯ ಉತ್ಸವ. ಸಂಗೀತ, ನೃತ್ಯ, ಮತ್ತು ಬೆಳಕಿನ ಸರಣಿ.</span></p>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="text-ks-red font-en text-xs font-bold tracking-wider uppercase"><span data-en="November 1">ನವೆಂಬರ್ 1</span></span>
+          <h3 class="font-display text-2xl font-bold text-ks-maroon mt-2 mb-2"><span data-en="Karnataka Rajyotsava">ಕನ್ನಡ ರಾಜ್ಯೋತ್ಸವ</span></h3>
+          <p class="text-ks-maroon/70 text-sm"><span data-en="Karnataka State Formation Day. A proud celebration of Kannada language and culture. Flag hoisting across the state.">ಕರ್ನಾಟಕ ರಾಜ್ಯ ರಚನೆಯ ದಿನ. ಕನ್ನಡ ಭಾಷೆ ಮತ್ತು ಸಂಸ್ಕೃತಿಯ ಹೆಮ್ಮೆಯ ಆಚರಣೆ. ರಾಜ್ಯಾದ್ಯಂತ ಧ್ವಜಾರೋಹಣ.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Cuisine Section ===== -->
+<section class="py-24 px-6 bg-ks-maroon text-ks-cream">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <div class="section-title-wrap">
+        <p class="text-ks-yellow font-en tracking-widest text-sm uppercase mb-2">Karnataka Cuisine</p>
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-ks-cream"><span data-en="Karnataka Cuisine">ಕನ್ನಡ ಪಾಕಕೃತಿ</span></h2>
+      </div>
+      <p class="text-ks-cream/70 mt-8 max-w-2xl mx-auto"><span data-en="Delicious foods of Karnataka — each with a traditional taste">ಕರ್ನಾಟಕದ ರುಚಿಕರ ತಿಂಡಿಗಳು — ಪ್ರತಿಯೊಂದೂ ಪರಂಪರೆಯ ಸ್ವಾದ</span></p>
+    </div>
+    
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="cuisine-card text-ks-maroon reveal">
+        <div class="cuisine-img">
+          <img src="https://picsum.photos/seed/bisi-bele-bath/600/400" alt="Bisi Bele Bath">
+          <div class="absolute bottom-3 left-3 text-ks-cream font-display font-bold text-lg z-10"><span data-en="Bisi Bele Bath">ಬಿಸಿಬೇಳೆ ಭಾತ್</span></div>
+        </div>
+        <div class="p-5">
+          <p class="text-sm text-ks-maroon/70"><span data-en="A blend of rice, vegetables, and spices. Karnataka's famous dish.">ಅನ್ನ, ತರಕಾರಿ, ಮಸಾಲೆಗಳ ಸಮ್ಮಿಳನ. ಕರ್ನಾಟಕದ ಪ್ರಸಿದ್ಧ ಖಾದ್ಯ.</span></p>
+        </div>
+      </div>
+      
+      <div class="cuisine-card text-ks-maroon reveal reveal-delay-1">
+        <div class="cuisine-img">
+          <img src="https://picsum.photos/seed/mysore-pak-sweet/600/400" alt="Mysore Pak">
+          <div class="absolute bottom-3 left-3 text-ks-cream font-display font-bold text-lg z-10"><span data-en="Mysore Pak">ಮೈಸೂರು ಪಾಕ್</span></div>
+        </div>
+        <div class="p-5">
+          <p class="text-sm text-ks-maroon/70"><span data-en="A royal sweet made from gram flour, ghee, and sugar.">ಕಡಲೆ ಹಿಟ್ಟು, ತುಪ್ಪ, ಸಕ್ಕರೆಯಿಂದ ತಯಾರಿಸಿದ ರಾಜಮನೆತನದ ಸಿಹಿ.</span></p>
+        </div>
+      </div>
+      
+      <div class="cuisine-card text-ks-maroon reveal reveal-delay-2">
+        <div class="cuisine-img">
+          <img src="https://picsum.photos/seed/masala-dosa-food/600/400" alt="Masala Dosa">
+          <div class="absolute bottom-3 left-3 text-ks-cream font-display font-bold text-lg z-10"><span data-en="Masala Dosa">ಮಸಾಲೆ ದೋಸೆ</span></div>
+        </div>
+        <div class="p-5">
+          <p class="text-sm text-ks-maroon/70"><span data-en="Bangalore's Udupi style dish. Served with potato curry.">ಬೆಂಗಳೂರಿನ ಉಡುಪಿ ಶೈಲಿಯ ಖಾದ್ಯ. ಆಲೂಗಡ್ಡೆ ಪಲ್ಯದೊಂದಿಗೆ ಬಡಿಸಲಾಗುತ್ತದೆ.</span></p>
+        </div>
+      </div>
+      
+      <div class="cuisine-card text-ks-maroon reveal reveal-delay-3">
+        <div class="cuisine-img">
+          <img src="https://picsum.photos/seed/ragi-mudde-traditional/600/400" alt="Ragi Mudde">
+          <div class="absolute bottom-3 left-3 text-ks-cream font-display font-bold text-lg z-10"><span data-en="Ragi Mudde">ರಾಗಿ ಮುದ್ದೆ</span></div>
+        </div>
+        <div class="p-5">
+          <p class="text-sm text-ks-maroon/70"><span data-en="Traditional food of Bangalore and Malnad regions.">ಬೆಂಗಳೂರು ಮತ್ತು ಮಲೆನಾಡು ಪ್ರದೇಶದ ಸಾಂಪ್ರದಾಯಿಕ ಆಹಾರ.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Testimonials ===== -->
+<section class="py-24 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <div class="section-title-wrap">
+        <p class="text-ks-red font-en tracking-widest text-sm uppercase mb-2">Traveler Stories</p>
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-ks-maroon"><span data-en="Traveler Experiences">ಪ್ರವಾಸಿಗಳ ಅನುಭವ</span></h2>
+      </div>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-quote"><i class="fas fa-quote-right"></i></div>
+        <div class="flex gap-1 mb-4 text-ks-yellow">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="text-ks-maroon/80 mb-6 leading-relaxed"><span data-en=""The Hampi tour was amazing! A rare opportunity to understand the history of the Vijayanagara Empire. The guides provided excellent information.">"ಹಂಪೆಯ ಪ್ರವಾಸ ಅದ್ಭುತ! ವಿಜಯನಗರ ಸಾಮ್ರಾಜ್ಯದ ಇತಿಹಾಸವನ್ನು ಅರಿಯುವ ಅಪೂರ್ವ ಅವಕಾಶ. ಮಾರ್ಗದರ್ಶಿಗಳು ಅತ್ಯುತ್ತಮ ಮಾಹಿತಿ ನೀಡಿದರು."</span></p>
+        <div class="flex items-center gap-3 pt-4 border-t border-ks-maroon/10">
+          <img src="https://picsum.photos/seed/traveler1/80/80" class="w-12 h-12 rounded-full object-cover" alt="">
+          <div>
+            <div class="font-display font-bold text-ks-maroon"><span data-en="Radhakrishna">ರಾಧಾಕೃಷ್ಣ</span></div>
+            <div class="text-xs text-ks-maroon/60"><span data-en="Bangalore">ಬೆಂಗಳೂರು</span></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-quote"><i class="fas fa-quote-right"></i></div>
+        <div class="flex gap-1 mb-4 text-ks-yellow">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="text-ks-maroon/80 mb-6 leading-relaxed"><span data-en=""Three days spent in Coorg's coffee plantations are the best memories of my life. The accommodation and food were extraordinary. Thank you Namma Karnataka!"">"ಕೊಡಗಿನ ಕಾಫಿ ತೋಟಗಳಲ್ಲಿ ಕಳೆದ ಮೂರು ದಿನಗಳು ಜೀವನದ ಅತ್ಯುತ್ತಮ ನೆನಪು. ವಸತಿ ಮತ್ತು ಆಹಾರ ಅಸಾಧಾರಣವಾಗಿತ್ತು. ಧನ್ಯವಾದ ನಮ್ಮ ಕರ್ನಾಟಕ!"</span></p>
+        <div class="flex items-center gap-3 pt-4 border-t border-ks-maroon/10">
+          <img src="https://picsum.photos/seed/traveler2/80/80" class="w-12 h-12 rounded-full object-cover" alt="">
+          <div>
+            <div class="font-display font-bold text-ks-maroon"><span data-en="Lakshmidevi">ಲಕ್ಷ್ಮೀದೇವಿ</span></div>
+            <div class="text-xs text-ks-maroon/60"><span data-en="Mysore">ಮೈಸೂರು</span></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-quote"><i class="fas fa-quote-right"></i></div>
+        <div class="flex gap-1 mb-4 text-ks-yellow">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="text-ks-maroon/80 mb-6 leading-relaxed"><span data-en=""Mysore Dasara tour was unforgettable! Palace lights, Jumbo Savari, cultural programs — everything was amazing. Professional service.">"ಮೈಸೂರು ದಸರಾ ಪ್ರವಾಸ ಅವಿಸ್ಮರಣೀಯ! ಅರಮನೆಯ ಬೆಳಕು, ಜಂಬೂ ಸವಾರಿ, ಸಾಂಸ್ಕೃತಿಕ ಕಾರ್ಯಕ್ರಮಗಳು — ಎಲ್ಲವೂ ಅದ್ಭುತವಾಗಿತ್ತು. ವೃತ್ತಿಪರ ಸೇವೆ."</span></p>
+        <div class="flex items-center gap-3 pt-4 border-t border-ks-maroon/10">
+          <img src="https://picsum.photos/seed/traveler3/80/80" class="w-12 h-12 rounded-full object-cover" alt="">
+          <div>
+            <div class="font-display font-bold text-ks-maroon"><span data-en="Suresh Hegde">ಸುರೇಶ ಹೆಗಡೆ</span></div>
+            <div class="text-xs text-ks-maroon/60"><span data-en="Dharwad">ಧಾರವಾಡ</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Booking / Contact Section ===== -->
+<section id="contact" class="py-24 px-6 bg-gradient-to-br from-ks-maroon via-ks-red-dark to-ks-charcoal text-ks-cream relative overflow-hidden">
+  <div class="absolute -top-32 -right-32 w-96 h-96 opacity-10">
+    <svg viewBox="0 0 200 200" class="w-full h-full" style="animation: rotate-slow 80s linear infinite;">
+      <g fill="none" stroke="#F5B82E" stroke-width="0.5">
+        <circle cx="100" cy="100" r="90"/>
+        <circle cx="100" cy="100" r="70"/>
+        <circle cx="100" cy="100" r="50"/>
+      </g>
+    </svg>
+  </div>
+  
+  <div class="max-w-6xl mx-auto relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="reveal">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="ks-flag" style="width: 50px; height: 32px;">
+            <div class="ks-flag-pole"></div>
+            <div class="ks-flag-cloth" style="width: 46px; height: 32px;">
+              <div class="ks-flag-yellow"></div>
+              <div class="ks-flag-red"></div>
+            </div>
+          </div>
+          <span class="text-ks-yellow font-display text-xl"><span data-en="Namma Karnataka Travels">ನಮ್ಮ ಕರ್ನಾಟಕ ಪ್ರವಾಸ</span></span>
+        </div>
+        
+        <h2 class="font-display text-4xl md:text-5xl font-bold mb-6"><span data-en="Book Your Trip Today">ನಿಮ್ಮ ಪ್ರವಾಸವನ್ನು ಇಂದೇ ಕಾಯಿರಿ</span></h2>
+        <p class="text-ks-cream/70 mb-8 leading-relaxed"><span data-en="Join us to explore the beautiful places of Karnataka. Our experienced team prepares special packages for you.">ಕರ್ನಾಟಕದ ಸುಂದರ ಸ್ಥಳಗಳನ್ನು ಅನ್ವೇಷಿಸಲು ನಮಗೆ ಸೇರಿ. ನಮ್ಮ ಅನುಭವಿ ತಂಡ ನಿಮಗಾಗಿ ವಿಶೇಷ ಪ್ಯಾಕೇಜ್‌ಗಳನ್ನು ಸಿದ್ಧಪಡಿಸುತ್ತದೆ.</span></p>
+        
+        <div class="space-y-4">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-ks-yellow/20 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-map-marker-alt text-ks-yellow"></i>
+            </div>
+            <div>
+              <div class="text-sm text-ks-cream/60"><span data-en="Address">ವಿಳಾಸ</span></div>
+              <div class="font-display"><span data-en="MG Road, Bangalore - 560001">ಎಂಜಿ ರಸ್ತೆ, ಬೆಂಗಳೂರು - 560001</span></div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-ks-yellow/20 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-phone-alt text-ks-yellow"></i>
+            </div>
+            <div>
+              <div class="text-sm text-ks-cream/60"><span data-en="Phone">ದೂರವಾಣಿ</span></div>
+              <div class="font-en">+91 80 2345 6789</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-ks-yellow/20 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-envelope text-ks-yellow"></i>
+            </div>
+            <div>
+              <div class="text-sm text-ks-cream/60"><span data-en="Email">ಇಮೇಲ್</span></div>
+              <div class="font-en">info@nammakarnataka.travel</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="reveal reveal-delay-2">
+        <form id="bookingForm" class="bg-ks-cream/10 backdrop-blur-md rounded-3xl p-8 border border-ks-yellow/30">
+          <h3 class="font-display text-2xl font-bold text-ks-yellow mb-6"><span data-en="Booking Form">ಪ್ರವಾಸ ಕಾಯ್ಕೆ ಫಾರ್ಮ್</span></h3>
+          
+          <div class="grid sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-sm text-ks-cream/70 mb-2"><span data-en="Name">ಹೆಸರು</span></label>
+              <input type="text" required class="form-input" data-en-ph="Your Name" data-kn-ph="ನಿಮ್ಮ ಹೆಸರು" placeholder="ನಿಮ್ಮ ಹೆಸರು">
+            </div>
+            <div>
+              <label class="block text-sm text-ks-cream/70 mb-2"><span data-en="Phone Number">ದೂರವಾಣಿ ಸಂಖ್ಯೆ</span></label>
+              <input type="tel" required class="form-input" placeholder="+91">
+            </div>
+          </div>
+          
+          <div class="mb-4">
+            <label class="block text-sm text-ks-cream/70 mb-2"><span data-en="Email">ಇಮೇಲ್</span></label>
+            <input type="email" required class="form-input" placeholder="email@example.com">
+          </div>
+          
+          <div class="grid sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-sm text-ks-cream/70 mb-2"><span data-en="Destination">ಸ್ಥಳ</span></label>
+              <select class="form-input" required id="destSelect">
+                <option value="" data-en="Select" data-kn="ಆಯ್ಕೆ ಮಾಡಿ">ಆಯ್ಕೆ ಮಾಡಿ</option>
+                <option data-en="Hampi" data-kn="ಹಂಪೆ">ಹಂಪೆ</option>
+                <option data-en="Mysore" data-kn="ಮೈಸೂರು">ಮೈಸೂರು</option>
+                <option data-en="Coorg" data-kn="ಕೊಡಗು">ಕೊಡಗು</option>
+                <option data-en="Jog Falls" data-kn="ಜೋಗ ಜಲಪಾತ">ಜೋಗ ಜಲಪಾತ</option>
+                <option data-en="Gokarna" data-kn="ಗೋಕರ್ಣ">ಗೋಕರ್ಣ</option>
+                <option data-en="Badami" data-kn="ಬಾದಾಮಿ">ಬಾದಾಮಿ</option>
+                <option data-en="Bangalore" data-kn="ಬೆಂಗಳೂರು">ಬೆಂಗಳೂರು</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm text-ks-cream/70 mb-2"><span data-en="Travel Date">ಪ್ರವಾಸ ದಿನಾಂಕ</span></label>
+              <input type="date" required class="form-input">
+            </div>
+          </div>
+          
+          <div class="grid sm:grid-cols-2 gap-4 mb-6">
+            <div>
+              <label class="block text-sm text-ks-cream/70 mb-2"><span data-en="Number of Travelers">ಪ್ರವಾಸಿಗರ ಸಂಖ್ಯೆ</span></label>
+              <input type="number" min="1" value="2" class="form-input">
+            </div>
+            <div>
+              <label class="block text-sm text-ks-cream/70 mb-2"><span data-en="Package">ಪ್ಯಾಕೇಜ್</span></label>
+              <select class="form-input">
+                <option data-en="Standard Package" data-kn="ಶಿಷ್ಟ ಪ್ಯಾಕೇಜ್">ಶಿಷ್ಟ ಪ್ಯಾಕೇಜ್</option>
+                <option data-en="VIP Package" data-kn="ವಿಐಪಿ ಪ್ಯಾಕೇಜ್">ವಿಐಪಿ ಪ್ಯಾಕೇಜ್</option>
+                <option data-en="Family Package" data-kn="ಕುಟುಂಬ ಪ್ಯಾಕೇಜ್">ಕುಟುಂಬ ಪ್ಯಾಕೇಜ್</option>
+                <option data-en="Adventure Package" data-kn="ಸಾಹಸ ಪ್ಯಾಕೇಜ್">ಸಾಹಸ ಪ್ಯಾಕೇಜ್</option>
+              </select>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn-primary w-full justify-center">
+            <span data-en="Submit Booking">ಪ್ರವಾಸ ಕಾಯಿರಿ</span>
+            <i class="fas fa-paper-plane text-sm"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="bg-ks-charcoal text-ks-cream pt-16 pb-8 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="ks-flag" style="width: 40px; height: 26px;">
+            <div class="ks-flag-pole"></div>
+            <div class="ks-flag-cloth" style="width: 36px; height: 26px;">
+              <div class="ks-flag-yellow"></div>
+              <div class="ks-flag-red"></div>
+            </div>
+          </div>
+          <div>
+            <div class="font-display font-bold text-lg"><span data-en="Namma Karnataka">ನಮ್ಮ ಕರ್ನಾಟಕ</span></div>
+            <div class="text-xs text-ks-yellow font-en tracking-widest">TRAVELS</div>
+          </div>
+        </div>
+        <p class="text-ks-cream/60 text-sm leading-relaxed mb-4"><span data-en="Our mission is to introduce the beauty of Karnataka to the world. Trusted travel service since 1995.">ಕರ್ನಾಟಕದ ಸೌಂದರ್ಯವನ್ನು ಪ್ರಪಂಚಕ್ಕೆ ಪರಿಚಯಿಸುವ ನಮ್ಮ ಧ್ಯೇಯೋದ್ದೇಶ. 1995 ರಿಂದ ವಿಶ್ವಸನೀಯ ಪ್ರವಾಸ ಸೇವೆ.</span></p>
+        <div class="flex gap-3">
+          <a href="#" class="w-9 h-9 rounded-full bg-ks-cream/10 hover:bg-ks-yellow hover:text-ks-maroon flex items-center justify-center transition"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="w-9 h-9 rounded-full bg-ks-cream/10 hover:bg-ks-yellow hover:text-ks-maroon flex items-center justify-center transition"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="w-9 h-9 rounded-full bg-ks-cream/10 hover:bg-ks-yellow hover:text-ks-maroon flex items-center justify-center transition"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="w-9 h-9 rounded-full bg-ks-cream/10 hover:bg-ks-yellow hover:text-ks-maroon flex items-center justify-center transition"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div>
+        <h4 class="font-display font-bold text-ks-yellow mb-4"><span data-en="Quick Links">ತ್ವರಿತ ಕೊಂಡಿಗಳು</span></h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#home" class="text-ks-cream/60 hover:text-ks-yellow transition"><span data-en="Home">ಮುಖಪುಟ</span></a></li>
+          <li><a href="#destinations" class="text-ks-cream/60 hover:text-ks-yellow transition"><span data-en="Destinations">ಸ್ಥಳಗಳು</span></a></li>
+          <li><a href="#packages" class="text-ks-cream/60 hover:text-ks-yellow transition"><span data-en="Packages">ಪ್ಯಾಕೇಜ್‌ಗಳು</span></a></li>
+          <li><a href="#culture" class="text-ks-cream/60 hover:text-ks-yellow transition"><span data-en="Culture">ಸಂಸ್ಕೃತಿ</span></a></li>
+          <li><a href="#contact" class="text-ks-cream/60 hover:text-ks-yellow transition"><span data-en="Contact">ಸಂಪರ್ಕ</span></a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="font-display font-bold text-ks-yellow mb-4"><span data-en="Popular Destinations">ಜನಪ್ರಿಯ ಸ್ಥಳಗಳು</span></h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="text-ks-cream/60 hover:text-ks-yellow transition"><span data-en="Hampi">ಹಂಪೆ</span></a></li>
+          <li><a href="#" class="text-ks-cream/60 hover:text-ks-yellow transition"><span data-en="Mysore">ಮೈಸೂರು</span></a></li>
+          <li><a href="#" class="text-ks-cream/60 hover:text-ks-yellow transition"><span data-en="Coorg">ಕೊಡಗು</span></a></li>
+          <li><a href="#" class="text-ks-cream/60 hover:text-ks-yellow transition"><span data-en="Gokarna">ಗೋಕರ್ಣ</span></a></li>
+          <li><a href="#" class="text-ks-cream/60 hover:text-ks-yellow transition"><span data-en="Jog Falls">ಜೋಗ ಜಲಪಾತ</span></a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="font-display font-bold text-ks-yellow mb-4"><span data-en="Newsletter">ಸುದ್ದಿಪತ್ರ</span></h4>
+        <p class="text-ks-cream/60 text-sm mb-4"><span data-en="Subscribe for special packages and discounts">ವಿಶೇಷ ಪ್ಯಾಕೇಜ್‌ಗಳು ಮತ್ತು ರಿಯಾಯಿತಿಗಾಗಿ ಚಂದಾದಾರರಾಗಿ</span></p>
+        <form id="newsletterForm" class="flex gap-2">
+          <input type="email" required placeholder="ನಿಮ್ಮ ಇಮೇಲ್" data-en-ph="Your Email" data-kn-ph="ನಿಮ್ಮ ಇಮೇಲ್" class="form-input flex-1 text-sm">
+          <button type="submit" class="bg-ks-yellow text-ks-maroon px-4 rounded-xl hover:bg-ks-yellow-light transition">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+    
+    <div class="border-t border-ks-cream/10 pt-8 mb-6">
+      <p class="text-center font-display text-ks-yellow text-lg italic">
+        <span data-en=""Karnataka, the land of Kannadigas' dreams, our proud homeland"">"ಕನ್ನಡಿಗರ ಕನಸಿನ ಕರ್ನಾಟಕ, ನಮ್ಮ ಹೆಮ್ಮೆಯ ನಾಡು"</span>
+      </p>
+    </div>
+    
+    <div class="border-t border-ks-cream/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-ks-cream/50">
+      <p><span data-en="© 2024 Namma Karnataka Travels. All rights reserved.">© 2024 ನಮ್ಮ ಕರ್ನಾಟಕ ಪ್ರವಾಸ. ಎಲ್ಲ ಹಕ್ಕುಗಳು ಕಾಯ್ದಿರಿಸಲಾಗಿವೆ.</span></p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-ks-yellow transition"><span data-en="Privacy Policy">ಗೌಪ್ಯತಾ ನೀತಿ</span></a>
+        <a href="#" class="hover:text-ks-yellow transition"><span data-en="Terms">ನಿಯಮಗಳು</span></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Toast notification -->
+<div id="toast" class="toast">
+  <i class="fas fa-check-circle text-ks-yellow text-xl"></i>
+  <span id="toast-msg">ಅರ್ಜಿ ಯಶಸ್ವಿಯಾಗಿ ಸಲ್ಲಿಸಲಾಗಿದೆ!</span>
+</div>
+
+<script>
+// ===== Language Toggle Logic =====
+let currentLang = 'kn';
+
+function applyLanguage() {
+  // Update all text elements with data-en
+  document.querySelectorAll('[data-en]').forEach(el => {
+    if (currentLang === 'en') {
+      if (!el.dataset.kn) el.dataset.kn = el.innerHTML;
+      el.innerHTML = el.dataset.en;
+    } else {
+      if (el.dataset.kn) el.innerHTML = el.dataset.kn;
+    }
+  });
+
+  // Update all placeholders
+  document.querySelectorAll('[data-en-ph]').forEach(el => {
+    el.placeholder = currentLang === 'en' ? el.dataset.enPh : el.dataset.knPh;
+  });
+
+  // Update all select options
+  document.querySelectorAll('option[data-en]').forEach(opt => {
+    if (currentLang === 'en') {
+      if (!opt.dataset.kn) opt.dataset.kn = opt.textContent;
+      opt.textContent = opt.dataset.en;
+    } else {
+      if (opt.dataset.kn) opt.textContent = opt.dataset.kn;
+    }
+  });
+
+  // Update toggle button texts
+  const btnText = currentLang === 'kn' ? 'English' : 'ಕನ್ನಡ';
+  document.getElementById('langText').textContent = btnText;
+  document.getElementById('langTextMobile').textContent = btnText;
+
+  // Update document language
+  document.documentElement.lang = currentLang;
+
+  // Re-render dynamic content
+  renderDestinations();
+  renderPackages();
+  renderRegions();
+  updateRegion(currentRegionKey);
+}
+
+document.getElementById('langToggle').addEventListener('click', () => {
+  currentLang = currentLang === 'kn' ? 'en' : 'kn';
+  applyLanguage();
+});
+
+document.getElementById('langToggleMobile').addEventListener('click', () => {
+  currentLang = currentLang === 'kn' ? 'en' : 'kn';
+  applyLanguage();
+});
+
+
+// ===== Bilingual Data =====
+const destinations = [
+  { 
+    name: { kn: 'ಹಂಪೆ', en: 'Hampi' }, 
+    desc: { 
+      kn: 'ವಿಜಯನಗರ ಸಾಮ್ರಾಜ್ಯದ ಭವ್ಯ ಅವಶೇಷಗಳು. ವಿಶ್ವ ಪರಂಪರೆಯ ಸ್ಥಳ. ಪ್ರಾಚೀನ ದೇವಾಲಯಗಳು ಮತ್ತು ಕಲಾಕೃತಿಗಳ ನಾಡು.', 
+      en: 'Magnificent ruins of the Vijayanagara Empire. A UNESCO World Heritage site with ancient temples and artistic wonders.' 
+    }, 
+    img: 'hampi-ruins-stone', 
+    badge: { kn: 'UNESCO', en: 'UNESCO' } 
+  },
+  { 
+    name: { kn: 'ಮೈಸೂರು', en: 'Mysuru' }, 
+    desc: { 
+      kn: 'ರಾಜಮನೆತನದ ನಗರಿ. ಮೈಸೂರು ಅರಮನೆ, ಚಾಮುಂಡಿ ಬೆಟ್ಟ, ದಸರಾ ಉತ್ಸವದ ತವರು.', 
+      en: 'The royal city. Home to Mysore Palace, Chamundi Hill, and the grand Dasara festival.' 
+    }, 
+    img: 'mysore-palace-lights', 
+    badge: { kn: 'ಜನಪ್ರಿಯ', en: 'Popular' } 
+  },
+  { 
+    name: { kn: 'ಕೊಡಗು', en: 'Coorg' }, 
+    desc: { 
+      kn: 'ಕಾಫಿ ತೋಟಗಳ ನಾಡು. ಪಶ್ಚಿಮ ಘಟ್ಟದ ಹಸಿರು ಸಮೃದ್ಧಿ. ಮಬ್ಬಿನ ಬೆಟ್ಟಗಳು ಮತ್ತು ಜಲಪಾತಗಳು.', 
+      en: 'The land of coffee plantations. Lush greenery of the Western Ghats with misty hills and waterfalls.' 
+    }, 
+    img: 'coorg-coffee-plantation', 
+    badge: { kn: 'ಹಸಿರು ನಾಡು', en: 'Green Land' } 
+  },
+  { 
+    name: { kn: 'ಜೋಗ ಜಲಪಾತ', en: 'Jog Falls' }, 
+    desc: { 
+      kn: 'ಭಾರತದ ಎರಡನೇ ಎತ್ತರದ ಜಲಪಾತ. ಶರಾವತಿ ನದಿಯ ಭವ್ಯ ಸೌಂದರ್ಯ. ನಾಲ್ಕು ಹಂತಗಳ ಜಲಪಾತ.', 
+      en: "India's second-highest waterfall. The magnificent beauty of the Sharavathi River with four distinct cascades." 
+    }, 
+    img: 'jog-falls-water', 
+    badge: { kn: 'ಪ್ರಕೃತಿ', en: 'Nature' } 
+  },
+  { 
+    name: { kn: 'ಗೋಕರ್ಣ', en: 'Gokarna' }, 
+    desc: { 
+      kn: 'ಕಡಲ ತೀರದ ಪವಿತ್ರ ಕ್ಷೇತ್ರ. ಸುಂದರ ಬೀಚ್‌ಗಳು, ಶಾಂತಿಯುತ ವಾತಾವರಣ, ಆಧ್ಯಾತ್ಮಿಕ ಅನುಭವ.', 
+      en: 'A sacred coastal town. Beautiful beaches, serene atmosphere, and a spiritual experience.' 
+    }, 
+    img: 'gokarna-beach-sunset', 
+    badge: { kn: 'ಬೀಚ್', en: 'Beach' } 
+  },
+  { 
+    name: { kn: 'ಬಾದಾಮಿ', en: 'Badami' }, 
+    desc: { 
+      kn: 'ಚಾಲುಕ್ಯ ವಾಸ್ತುಶಿಲ್ಪದ ಅದ್ಭುತ ಗುಹಾಲಯಗಳು. ಕೆಂಪು ಮರಳುಗಲ್ಲಿನ ಬೆಟ್ಟಗಳಲ್ಲಿ ಕೆತ್ತಿದ ದೇವಾಲಯಗಳು.', 
+      en: 'Amazing cave temples of Chalukya architecture. Temples carved into red sandstone hills.' 
+    }, 
+    img: 'badami-cave-temples', 
+    badge: { kn: 'ಇತಿಹಾಸ', en: 'History' } 
+  }
+];
+
+const packages = [
+  { 
+    name: { kn: 'ಹಂಪೆ ಪ್ರವಾಸ', en: 'Hampi Tour' }, 
+    days: { kn: '3 ದಿನ / 2 ರಾತ್ರಿ', en: '3 Days / 2 Nights' }, 
+    price: '8,999', 
+    img: 'hampi-package', 
+    featured: false, 
+    includes: [
+      { kn: 'ವಸತಿ', en: 'Stay' },
+      { kn: 'ಆಹಾರ', en: 'Food' },
+      { kn: 'ಮಾರ್ಗದರ್ಶಿ', en: 'Guide' }
+    ] 
+  },
+  { 
+    name: { kn: 'ಮೈಸೂರು-ಕೊಡಗು', en: 'Mysore-Coorg' }, 
+    days: { kn: '5 ದಿನ / 4 ರಾತ್ರಿ', en: '5 Days / 4 Nights' }, 
+    price: '15,999', 
+    img: 'mysore-coorg', 
+    featured: true, 
+    includes: [
+      { kn: 'ವಸತಿ', en: 'Stay' },
+      { kn: 'ಆಹಾರ', en: 'Food' },
+      { kn: 'ವಾಹನ', en: 'Vehicle' },
+      { kn: 'ಮಾರ್ಗದರ್ಶಿ', en: 'Guide' }
+    ] 
+  },
+  { 
+    name: { kn: 'ಕರಾವಳಿ ಪ್ರವಾಸ', en: 'Coastal Tour' }, 
+    days: { kn: '4 ದಿನ / 3 ರಾತ್ರಿ', en: '4 Days / 3 Nights' }, 
+    price: '12,999', 
+    img: 'coastal-package', 
+    featured: false, 
+    includes: [
+      { kn: 'ಬೀಚ್ ರೆಸಾರ್ಟ್', en: 'Beach Resort' },
+      { kn: 'ಆಹಾರ', en: 'Food' },
+      { kn: 'ವಾಹನ', en: 'Vehicle' }
+    ] 
+  },
+  { 
+    name: { kn: 'ಪಶ್ಚಿಮ ಘಟ್ಟ ಸಾಹಸ', en: 'Western Ghats Adventure' }, 
+    days: { kn: '6 ದಿನ / 5 ರಾತ್ರಿ', en: '6 Days / 5 Nights' }, 
+    price: '22,999', 
+    img: 'western-ghats', 
+    featured: false, 
+    includes: [
+      { kn: 'ಟ್ರೆಕ್ಕಿಂಗ್', en: 'Trekking' },
+      { kn: 'ಕ್ಯಾಂಪಿಂಗ್', en: 'Camping' },
+      { kn: 'ಆಹಾರ', en: 'Food' },
+      { kn: 'ಮಾರ್ಗದರ್ಶಿ', en: 'Guide' }
+    ] 
+  }
+];
+
+const regions = {
+  north: {
+    name: { kn: 'ಉತ್ತರ ಕರ್ನಾಟಕ', en: 'North Karnataka' },
+    desc: {
+      kn: 'ಐತಿಹಾಸಿಕ ಸ್ಮಾರಕಗಳು, ಪ್ರಾಚೀನ ವಾಸ್ತುಶಿಲ್ಪ ಮತ್ತು ಸಮೃದ್ಧ ಪರಂಪರೆಯ ನಾಡು. ವಿಜಯನಗರ ಸಾಮ್ರಾಜ್ಯದ ಭವ್ಯ ಅವಶೇಷಗಳು ಇಲ್ಲಿವೆ.',
+      en: 'A land of historical monuments, ancient architecture, and rich heritage. Home to the magnificent ruins of the Vijayanagara Empire.'
+    },
+    places: [
+      { kn: 'ಹಂಪೆ', en: 'Hampi' },
+      { kn: 'ಬಾದಾಮಿ', en: 'Badami' },
+      { kn: 'ಪಟ್ಟದಕಲ್ಲು', en: 'Pattadakal' },
+      { kn: 'ಬಿಜಾಪುರ', en: 'Bijapur' },
+      { kn: 'ಗುಲ್ಬರ್ಗಾ', en: 'Gulbarga' },
+      { kn: 'ಐಹೊಳೆ', en: 'Aihole' }
+    ]
+  },
+  coastal: {
+    name: { kn: 'ಕರಾವಳಿ', en: 'Coastal Karnataka' },
+    desc: {
+      kn: 'ಅರಬ್ ಸಮುದ್ರದ ತೀರದ ಸುಂದರ ಕಡಲತಡಿಗಳು, ತಾಜಾ ಸಮುದ್ರ ಆಹಾರ, ಮತ್ತು ಪವಿತ್ರ ದೇವಾಲಯಗಳ ಪ್ರದೇಶ.',
+      en: 'Beautiful beaches along the Arabian Sea coast, fresh seafood, and sacred temples.'
+    },
+    places: [
+      { kn: 'ಗೋಕರ್ಣ', en: 'Gokarna' },
+      { kn: 'ಮಂಗಳೂರು', en: 'Mangalore' },
+      { kn: 'ಉಡುಪಿ', en: 'Udupi' },
+      { kn: 'ಮುರುಡೇಶ್ವರ', en: 'Murudeshwara' },
+      { kn: 'ಕಾರವಾರ', en: 'Karwar' },
+      { kn: 'ಧರ್ಮಸ್ಥಳ', en: 'Dharmasthala' }
+    ]
+  },
+  malnad: {
+    name: { kn: 'ಮಲೆನಾಡು', en: 'Malnad Region' },
+    desc: {
+      kn: 'ಪಶ್ಚಿಮ ಘಟ್ಟದ ಹಸಿರು ಸಮೃದ್ಧ ನಾಡು. ಕಾಫಿ ತೋಟಗಳು, ಜಲಪಾತಗಳು, ಮತ್ತು ಜೀವವೈವಿಧ್ಯದ ಹಾಟ್‌ಸ್ಪಾಟ್.',
+      en: 'The lush green land of the Western Ghats. Coffee plantations, waterfalls, and a biodiversity hotspot.'
+    },
+    places: [
+      { kn: 'ಕೊಡಗು', en: 'Coorg' },
+      { kn: 'ಚಿಕ್ಮಗಳೂರು', en: 'Chikmagalur' },
+      { kn: 'ಶಿವಮೊಗ್ಗ', en: 'Shimoga' },
+      { kn: 'ಸಕಲೇಶಪುರ', en: 'Sakleshpur' },
+      { kn: 'ಆಗುಂಬೆ', en: 'Agumbe' },
+      { kn: 'ಕೆಮ್ಮಣ್ಣು', en: 'Kemmannu' }
+    ]
+  },
+  south: {
+    name: { kn: 'ದಕ್ಷಿಣ ಕರ್ನಾಟಕ', en: 'South Karnataka' },
+    desc: {
+      kn: 'ರಾಜಮನೆತನದ ಪರಂಪರೆ ಮತ್ತು ಆಧುನಿಕ ನಗರಗಳ ಸಮ್ಮಿಳನ. ಮೈಸೂರು ಅರಮನೆ, ಬೆಂಗಳೂರಿನ ತಂತ್ರಜ್ಞಾನ ಕೇಂದ್ರ.',
+      en: 'A blend of royal heritage and modern cities. Mysore Palace and Bangalore\'s technology hub.'
+    },
+    places: [
+      { kn: 'ಮೈಸೂರು', en: 'Mysore' },
+      { kn: 'ಬೆಂಗಳೂರು', en: 'Bangalore' },
+      { kn: 'ಮಂಡ್ಯ', en: 'Mandya' },
+      { kn: 'ಚಾಮರಾಜನಗರ', en: 'Chamarajanagar' },
+      { kn: 'ರಾಮನಗರ', en: 'Ramanagara' },
+      { kn: 'ನಂದಿ ಬೆಟ್ಟ', en: 'Nandi Hills' }
+    ]
+  }
+};
+
+
+// ===== Render Functions =====
+function renderDestinations() {
+  const destGrid = document.getElementById('destinations-grid');
+  destGrid.innerHTML = destinations.map((d, i) => `
+    <div class="dest-card reveal visible reveal-delay-${(i % 3) + 1}" style="height: 380px;">
+      <img src="https://picsum.photos/seed/${d.img}/800/600" alt="${d.name.en}">
+      <div class="overlay"></div>
+      <div class="badge">${d.badge[currentLang]}</div>
+      <div class="content">
+        <p class="text-ks-yellow text-xs font-en tracking-wider uppercase mb-1">${d.name.en}</p>
+        <h3 class="font-display text-3xl font-bold text-ks-cream mb-2">${d.name[currentLang]}</h3>
+        <div class="desc">
+          <p class="text-sm leading-relaxed">${d.desc[currentLang]}</p>
+        </div>
+        <button class="mt-4 text-ks-yellow text-sm font-display flex items-center gap-2 hover:gap-3 transition-all" onclick="showToast('${currentLang === 'kn' ? d.name.kn + ' ಪ್ಯಾಕೇಜ್ ವಿವರಗಳು ಶೀಘ್ರದಲ್ಲೇ ಲಭ್ಯವಾಗಲಿದೆ!' : d.name.en + ' package details coming soon!'}')">
+          ${currentLang === 'kn' ? 'ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ' : 'Learn More'} <i class="fas fa-arrow-right text-xs"></i>
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderPackages() {
+  const packagesGrid = document.getElementById('packages-grid');
+  packagesGrid.innerHTML = packages.map((p, i) => `
+    <div class="package-card ${p.featured ? 'featured' : ''} reveal visible reveal-delay-${(i % 4) + 1}">
+      ${p.featured ? `<div class="package-tag">${currentLang === 'kn' ? 'ಜನಪ್ರಿಯ' : 'Popular'}</div>` : ''}
+      <div class="relative h-48 overflow-hidden">
+        <img src="https://picsum.photos/seed/${p.img}/600/400" alt="${p.name.en}" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-ks-maroon/80 to-transparent"></div>
+        <div class="absolute bottom-3 left-4 right-4">
+          <h3 class="font-display text-2xl font-bold text-ks-cream">${p.name[currentLang]}</h3>
+          <p class="text-ks-yellow text-sm font-en">${p.days[currentLang]}</p>
+        </div>
+      </div>
+      <div class="p-6">
+        <div class="flex flex-wrap gap-2 mb-4">
+          ${p.includes.map(inc => `<span class="text-xs px-2 py-1 bg-ks-cream-dark/50 text-ks-maroon rounded-full">${inc[currentLang]}</span>`).join('')}
+        </div>
+        <div class="flex items-end justify-between mb-4 pt-4 border-t border-ks-maroon/10">
+          <div>
+            <span class="text-xs text-ks-maroon/60">${currentLang === 'kn' ? 'ಒಬ್ಬರಿಗೆ' : 'Per Person'}</span>
+            <div class="font-display text-3xl font-bold text-ks-red">₹${p.price}</div>
+          </div>
+        </div>
+        <button onclick="showToast('${currentLang === 'kn' ? 'ನಿಮ್ಮ ' + p.name.kn + ' ಬುಕಿಂಗ್ ಪ್ರಕ್ರಿಯೆ ಪ್ರಾರಂಭವಾಗಿದೆ!' : 'Your ' + p.name.en + ' booking process has started!'}')" class="w-full py-3 rounded-xl ${p.featured ? 'btn-primary' : 'bg-ks-maroon text-ks-cream hover:bg-ks-red transition'} font-display flex items-center justify-center gap-2">
+          ${currentLang === 'kn' ? 'ಈಗ ಕಾಯಿರಿ' : 'Book Now'} <i class="fas fa-arrow-right text-xs"></i>
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+let currentRegionKey = 'north';
+
+function renderRegions() {
+  const regionList = document.getElementById('region-list');
+  regionList.innerHTML = Object.entries(regions).map(([key, r]) => `
+    <div class="region-card ${key === currentRegionKey ? 'active' : ''} p-4 rounded-xl bg-ks-charcoal/40 border border-ks-yellow/20" data-region="${key}">
+      <div class="flex items-center justify-between">
+        <div>
+          <div class="font-display font-bold">${r.name[currentLang]}</div>
+          <div class="text-xs opacity-60 font-en">${r.name.en}</div>
+        </div>
+        <i class="fas fa-arrow-right region-arrow transition-transform text-ks-yellow text-sm"></i>
+      </div>
+    </div>
+  `).join('');
+
+  document.querySelectorAll('.region-card').forEach(card => {
+    card.addEventListener('click', () => updateRegion(card.dataset.region));
+  });
+}
+
+function updateRegion(regionKey) {
+  currentRegionKey = regionKey;
+  const r = regions[regionKey];
+  document.getElementById('region-name').textContent = r.name[currentLang];
+  document.getElementById('region-name-en').textContent = r.name.en;
+  document.getElementById('region-desc').textContent = r.desc[currentLang];
+  document.getElementById('region-places').innerHTML = r.places.map(p => 
+    `<span class="px-3 py-1.5 bg-ks-yellow/20 text-ks-yellow rounded-full text-sm font-display">${p[currentLang]}</span>`
+  ).join('');
+
+  document.querySelectorAll('.region-card').forEach(c => c.classList.remove('active'));
+  const activeCard = document.querySelector(`.region-card[data-region="${regionKey}"]`);
+  if (activeCard) activeCard.classList.add('active');
+
+  document.querySelectorAll('.karnataka-map path').forEach(p => p.classList.remove('active'));
+  const activePath = document.getElementById(`region-${regionKey}`);
+  if (activePath) activePath.classList.add('active');
+}
+
+function bookRegion() {
+  const msg = currentLang === 'kn' 
+    ? 'ಈ ಪ್ರದೇಶದ ಪ್ಯಾಕೇಜ್‌ಗಳನ್ನು ಶೀಘ್ರದಲ್ಲೇ ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ!' 
+    : 'Packages for this region are loading soon!';
+  showToast(msg);
+}
+
+// ===== Particles =====
+const particlesContainer = document.getElementById('particles');
+const particleCount = 35;
+for (let i = 0; i < particleCount; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  const size = Math.random() * 4 + 2;
+  p.style.width = size + 'px';
+  p.style.height = size + 'px';
+  p.style.left = Math.random() * 100 + '%';
+  p.style.animationDuration = (Math.random() * 15 + 10) + 's';
+  p.style.animationDelay = (Math.random() * 15) + 's';
+  p.style.animationName = 'float-up';
+  p.style.animationTimingFunction = 'linear';
+  p.style.animationIterationCount = 'infinite';
+  particlesContainer.appendChild(p);
+}
+
+// ===== Reveal on scroll =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal, .timeline-item').forEach(el => observer.observe(el));
+
+// ===== Navbar scroll effect =====
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    navbar.style.padding = '8px 0';
+  } else {
+    navbar.style.padding = '0';
+  }
+});
+
+// ===== Mobile menu =====
+const mobileMenu = document.getElementById('mobileMenu');
+document.getElementById('mobileMenuBtn').addEventListener('click', () => mobileMenu.classList.add('open'));
+document.getElementById('closeMobileMenu').addEventListener('click', () => mobileMenu.classList.remove('open'));
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+});
+
+// ===== Toast =====
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3500);
+}
+
+// ===== Form handlers =====
+document.getElementById('bookingForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const msg = currentLang === 'kn' 
+    ? 'ನಿಮ್ಮ ಪ್ರವಾಸ ವಿನಂತಿ ಸ್ವೀಕರಿಸಲಾಗಿದೆ! ಶೀಘ್ರದಲ್ಲೇ ಸಂಪರ್ಕಿಸುತ್ತೇವೆ.' 
+    : 'Your travel request has been received! We will contact you soon.';
+  showToast(msg);
+  e.target.reset();
+});
+
+document.getElementById('newsletterForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const msg = currentLang === 'kn' ? 'ಸುದ್ದಿಪತ್ರ ಚಂದಾದಾರಿಗಾಗಿ ಧನ್ಯವಾದ!' : 'Thank you for subscribing to our newsletter!';
+  showToast(msg);
+  e.target.reset();
+});
+
+// ===== Parallax hero pillars on scroll =====
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  document.querySelectorAll('.pillar-silhouette').forEach((p, i) => {
+    const speed = i % 2 === 0 ? 0.3 : 0.5;
+    p.style.transform = `translateY(${scrolled * speed}px)${i % 2 === 1 ? ' scaleX(-1)' : ''}`;
+  });
+});
+
+// ===== Initialize =====
+renderDestinations();
+renderPackages();
+renderRegions();
+updateRegion('north');
+document.getElementById('region-north').classList.add('active');
+
+console.log('ನಮ್ಮ ಕರ್ನಾಟಕ ಪ್ರವಾಸ - ವೆಬ್‌ಸೈಟ್ ಸಿದ್ಧ!');
+</script>
+
+</body>
+</html>
